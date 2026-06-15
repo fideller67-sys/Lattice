@@ -51,9 +51,18 @@ import DirectorAuditLogs from './pages/director/DirectorAuditLogs';
 
 import ProtectedRoute from './components/ProtectedRoute';
 
+import { Toaster } from 'react-hot-toast';
+
 function App() {
   return (
     <BrowserRouter>
+      <Toaster position="bottom-right" toastOptions={{
+        style: {
+          background: '#111116',
+          color: '#fff',
+          border: '1px solid rgba(255, 255, 255, 0.1)',
+        },
+      }} />
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/signup" element={<Signup />} />

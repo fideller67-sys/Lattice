@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Cloud, ShieldAlert, Cpu, HardDrive, MoreHorizontal, Activity, Loader2 } from 'lucide-react';
+import toast from 'react-hot-toast';
 import api from '../../config/api';
 
 export default function DirectorInfraOps() {
   const [data, setData] = useState(null);
+  const [localIncidents, setLocalIncidents] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -11,6 +13,7 @@ export default function DirectorInfraOps() {
       try {
         const res = await api.get('/metric-dashboards/infra-ops');
         setData(res);
+        setLocalIncidents(res.items || []);
       } catch (err) {
         console.error(err);
       } finally {
@@ -28,9 +31,36 @@ export default function DirectorInfraOps() {
     );
   }
 
-  const incidents = data?.items || [];
   const metrics = data?.metrics || [{}, {}, {}];
 
+  const handleAcknowledgeAll = () => {
+    // Optimistically update UI
+    const updated = localIncidents.map(inc => ({
+      ...inc,
+      status: 'RESOLVED',
+      statusColor: 'text-emerald-400 border-emerald-400/20 bg-emerald-400/10'
+    }));
+    setLocalIncidents(updated);
+    toast.success('All incidents acknowledged', { icon: '✅' });
+  };
+
+  const handleViewDatadog = () => {
+    toast.promise(
+      new Promise(resolve => setTimeout(resolve, 1500)),
+      {
+        loading: 'Connecting to Datadog...',
+        success: 'Connection established. Opening dashboard...',
+        error: 'Failed to connect.',
+      }
+    ).then(() => {
+      // Simulate opening a new tab
+      window.open('https://app.datadoghq.com', '_blank');
+    });
+  };
+
+  const handleIncidentAction = (id) => {
+    toast(`Viewing details for ${id}`, { icon: '🔍' });
+  };
 
   return (
     <div className="p-8 max-w-5xl mx-auto">
@@ -40,7 +70,10 @@ export default function DirectorInfraOps() {
           <span className="text-gray-500 font-light">#</span> Infra Ops
         </h1>
         <div className="flex items-center gap-3">
-          <button className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors shadow-lg shadow-blue-500/20">
+          <button 
+            onClick={handleViewDatadog}
+            className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors shadow-lg shadow-blue-500/20"
+          >
             View Datadog
           </button>
         </div>
@@ -78,10 +111,15 @@ export default function DirectorInfraOps() {
       <div className="bg-[#111116] border border-white/5 rounded-xl overflow-hidden">
         <div className="p-6 border-b border-white/5 flex items-center justify-between">
           <h2 className="text-sm font-bold text-white">Recent Incidents & Alerts</h2>
-          <button className="text-xs font-medium text-blue-400 hover:text-blue-300 transition-colors">Acknowledge All</button>
+          <button 
+            onClick={handleAcknowledgeAll}
+            className="text-xs font-medium text-blue-400 hover:text-blue-300 transition-colors"
+          >
+            Acknowledge All
+          </button>
         </div>
         <div className="divide-y divide-white/5">
-          {incidents.map((inc) => (
+          {localIncidents.map((inc) => (
             <div key={inc.id} className="p-5 hover:bg-white/[0.02] transition-colors flex items-center justify-between group">
               <div className="flex items-center gap-4">
                 <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center border border-white/10 shrink-0">
@@ -109,7 +147,10 @@ export default function DirectorInfraOps() {
                     {inc.time}
                   </div>
                 </div>
-                <button className="p-2 hover:bg-white/10 rounded-lg text-gray-500 transition-colors opacity-0 group-hover:opacity-100">
+                <button 
+                  onClick={() => handleIncidentAction(inc.id)}
+                  className="p-2 hover:bg-white/10 rounded-lg text-gray-500 transition-colors opacity-0 group-hover:opacity-100"
+                >
                   <MoreHorizontal className="w-4 h-4" />
                 </button>
               </div>

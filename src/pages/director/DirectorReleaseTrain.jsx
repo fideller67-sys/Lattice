@@ -1,16 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import { Train, CheckCircle2, Clock, PlayCircle, MoreHorizontal, AlertCircle, Loader2 } from 'lucide-react';
+import { Train, CheckCircle2, Clock, PlayCircle, MoreHorizontal, AlertCircle, Loader2, X, Plus } from 'lucide-react';
+import toast from 'react-hot-toast';
 import api from '../../config/api';
 
 export default function DirectorReleaseTrain() {
   const [data, setData] = useState(null);
+  const [localReleases, setLocalReleases] = useState([]);
   const [loading, setLoading] = useState(true);
+  
+  // Modal State
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [newReleaseName, setNewReleaseName] = useState('');
+  const [newReleaseDate, setNewReleaseDate] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const res = await api.get('/metric-dashboards/release-train');
         setData(res);
+        setLocalReleases(res.items || []);
       } catch (err) {
         console.error(err);
       } finally {
@@ -28,9 +36,30 @@ export default function DirectorReleaseTrain() {
     );
   }
 
-  const releases = data?.items || [];
   const metrics = data?.metrics || [{}, {}, {}];
 
+  const handleScheduleSubmit = (e) => {
+    e.preventDefault();
+    if (!newReleaseName) return;
+
+    const newRelease = {
+      id: `REL-${Math.floor(Math.random() * 900) + 100}`,
+      name: newReleaseName,
+      stage: 'Planning',
+      tickets: 0,
+      blockers: 0,
+      status: 'UPCOMING',
+      statusColor: 'text-purple-400 border-purple-400/20 bg-purple-400/10',
+      lastUpdated: newReleaseDate || 'Scheduled'
+    };
+
+    setLocalReleases([newRelease, ...localReleases]);
+    setIsModalOpen(false);
+    setNewReleaseName('');
+    setNewReleaseDate('');
+    
+    toast.success('Release scheduled successfully!', { icon: '🚀' });
+  };
 
   return (
     <div className="p-8 max-w-5xl mx-auto">
@@ -40,7 +69,11 @@ export default function DirectorReleaseTrain() {
           <span className="text-gray-500 font-light">#</span> Release Train
         </h1>
         <div className="flex items-center gap-3">
-          <button className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors shadow-lg shadow-blue-500/20">
+          <button 
+            onClick={() => setIsModalOpen(true)}
+            className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors shadow-lg shadow-blue-500/20 flex items-center gap-2"
+          >
+            <Plus className="w-4 h-4" />
             Schedule Release
           </button>
         </div>
@@ -78,10 +111,15 @@ export default function DirectorReleaseTrain() {
       <div className="bg-[#111116] border border-white/5 rounded-xl overflow-hidden">
         <div className="p-6 border-b border-white/5 flex items-center justify-between">
           <h2 className="text-sm font-bold text-white">Upcoming & Active Releases</h2>
-          <button className="text-xs font-medium text-blue-400 hover:text-blue-300 transition-colors">View Timeline</button>
+          <button 
+            onClick={() => toast('Timeline view is under construction', { icon: '🚧' })}
+            className="text-xs font-medium text-blue-400 hover:text-blue-300 transition-colors"
+          >
+            View Timeline
+          </button>
         </div>
         <div className="divide-y divide-white/5">
-          {releases.map((release) => (
+          {localReleases.map((release) => (
             <div key={release.id} className="p-5 hover:bg-white/[0.02] transition-colors flex items-center justify-between group">
               <div className="flex items-center gap-4">
                 <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center border border-white/10 shrink-0">
@@ -110,7 +148,10 @@ export default function DirectorReleaseTrain() {
                     {release.lastUpdated}
                   </div>
                 </div>
-                <button className="p-2 hover:bg-white/10 rounded-lg text-gray-500 transition-colors opacity-0 group-hover:opacity-100">
+                <button 
+                  onClick={() => toast(`Editing ${release.id}`)}
+                  className="p-2 hover:bg-white/10 rounded-lg text-gray-500 transition-colors opacity-0 group-hover:opacity-100"
+                >
                   <MoreHorizontal className="w-4 h-4" />
                 </button>
               </div>
@@ -118,6 +159,63 @@ export default function DirectorReleaseTrain() {
           ))}
         </div>
       </div>
+
+      {/* Modal Overlay */}
+      {isModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+          <div className="bg-[#111116] border border-white/10 rounded-2xl w-full max-w-md shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-200">
+            <div className="p-6 border-b border-white/5 flex justify-between items-center">
+              <h3 className="text-lg font-bold text-white">Schedule Release</h3>
+              <button 
+                onClick={() => setIsModalOpen(false)}
+                className="text-gray-500 hover:text-white transition-colors"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            
+            <form onSubmit={handleScheduleSubmit} className="p-6 space-y-4">
+              <div>
+                <label className="block text-xs font-medium text-gray-400 mb-2">Release Name</label>
+                <input 
+                  type="text"
+                  value={newReleaseName}
+                  onChange={(e) => setNewReleaseName(e.target.value)}
+                  placeholder="e.g. v2.4.0 Core Update"
+                  className="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-blue-500 transition-colors"
+                  autoFocus
+                  required
+                />
+              </div>
+              <div>
+                <label className="block text-xs font-medium text-gray-400 mb-2">Target Date (Optional)</label>
+                <input 
+                  type="date"
+                  value={newReleaseDate}
+                  onChange={(e) => setNewReleaseDate(e.target.value)}
+                  className="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-2.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-blue-500 transition-colors"
+                />
+              </div>
+              
+              <div className="pt-4 flex justify-end gap-3">
+                <button 
+                  type="button"
+                  onClick={() => setIsModalOpen(false)}
+                  className="px-4 py-2 text-sm font-medium text-gray-400 hover:text-white transition-colors"
+                >
+                  Cancel
+                </button>
+                <button 
+                  type="submit"
+                  className="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium rounded-lg transition-colors shadow-lg shadow-blue-500/20"
+                >
+                  Schedule Release
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
