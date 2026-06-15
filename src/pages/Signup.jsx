@@ -140,20 +140,7 @@ export default function Signup() {
             </button>
           </form>
 
-          <div className="flex items-center gap-4 mb-6">
-            <div className="flex-1 h-px bg-white/10"></div>
-            <span className="text-xs text-gray-500 font-medium">or continue with</span>
-            <div className="flex-1 h-px bg-white/10"></div>
-          </div>
 
-          <div className="grid grid-cols-2 gap-3 mb-8">
-            <button type="button" disabled className="flex items-center justify-center gap-2 bg-[#16161c] border border-white/5 hover:bg-white/5 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors opacity-50 cursor-not-allowed">
-              Continue with Google
-            </button>
-            <a href={`${import.meta.env.VITE_API_URL || 'http://localhost:5000/api'}/auth/github`} className="flex items-center justify-center gap-2 bg-[#16161c] border border-white/5 hover:bg-white/5 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors">
-              Continue with GitHub
-            </a>
-          </div>
 
           <div className="text-center text-sm text-gray-400">
             Already have an account? <Link to="/signin" className="text-blue-400 hover:text-blue-300 font-medium ml-1">Log in</Link>

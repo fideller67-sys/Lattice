@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AuthLayout from '../layouts/AuthLayout';
+import { useAuth } from '../context/AuthContext';
 
 export default function InviteTeammates() {
   const navigate = useNavigate();
+  const { user } = useAuth();
   const [invitations, setInvitations] = useState('');
 
   const handleContinue = (e) => {
     e.preventDefault();
-    navigate('/connect-github');
+    const role = user?.role === 'admin' ? 'director' : (user?.role || 'developer');
+    navigate(`/${role}/dashboard`);
   };
 
   return (
@@ -37,7 +40,7 @@ export default function InviteTeammates() {
         <div className="flex items-center justify-between pt-4">
           <button 
             type="button" 
-            onClick={() => navigate('/connect-github')}
+            onClick={handleContinue}
             className="text-sm font-medium text-gray-400 hover:text-white transition-colors"
           >
             Skip
