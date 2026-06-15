@@ -136,7 +136,7 @@ export default function Signin() {
               <div className="flex-1 h-px bg-white/5"></div>
             </div>
 
-            <a href="http://localhost:5000/api/auth/github" className="w-full flex items-center justify-center gap-2 bg-[#16161c] border border-white/5 hover:bg-white/5 px-4 py-3 rounded-lg text-sm font-medium transition-colors">
+            <a href={`${import.meta.env.VITE_API_URL || 'http://localhost:5000/api'}/auth/github`} className="w-full flex items-center justify-center gap-2 bg-[#16161c] border border-white/5 hover:bg-white/5 px-4 py-3 rounded-lg text-sm font-medium transition-colors">
               Continue with GitHub
             </a>
             
