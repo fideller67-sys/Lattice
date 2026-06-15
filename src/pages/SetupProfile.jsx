@@ -5,8 +5,8 @@ import { User } from 'lucide-react';
 
 export default function SetupProfile() {
   const navigate = useNavigate();
-  const [name, setName] = useState('Jordan Mitchell');
-  const [title, setTitle] = useState('Software engineer');
+  const [name, setName] = useState('');
+  const [title, setTitle] = useState('');
 
   const handleContinue = (e) => {
     e.preventDefault();
@@ -31,7 +31,8 @@ export default function SetupProfile() {
               type="text" 
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="flex-1 bg-transparent border-none text-sm text-white focus:outline-none"
+              placeholder="Your name"
+              className="flex-1 bg-transparent border-none text-sm text-white placeholder-gray-500 focus:outline-none"
               required
             />
           </div>
@@ -43,6 +44,7 @@ export default function SetupProfile() {
             type="text" 
             value={title}
             onChange={(e) => setTitle(e.target.value)}
+            placeholder="e.g. Software Engineer"
             className="w-full bg-[#16161c] border border-white/10 rounded-lg px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 transition-colors"
             required
           />
