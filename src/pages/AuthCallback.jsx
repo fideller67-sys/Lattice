@@ -28,7 +28,6 @@ export default function AuthCallback() {
         if (needsOnboarding === 'true') {
           navigate('/setup-workspace');
         } else {
-          // Map 'admin' role to 'director' since DirectorLayout handles admin views
           const routeRole = role === 'admin' ? 'director' : (role || 'developer');
           navigate(`/${routeRole}/dashboard`);
         }

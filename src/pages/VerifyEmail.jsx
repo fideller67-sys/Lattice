@@ -26,7 +26,6 @@ export default function VerifyEmail() {
     newCode[index] = value;
     setCode(newCode);
     
-    // Move to next input automatically
     if (value && index < 5) {
       inputRefs[index + 1].current.focus();
     }

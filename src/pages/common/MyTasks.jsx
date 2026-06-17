@@ -22,7 +22,6 @@ export default function MyTasks({ title = "My Development Tasks" }) {
     fetchTasks();
   }, []);
 
-  // Map API status strings to display names
   const statusMapping = {
     'todo': 'To Do',
     'in-progress': 'In Progress',
@@ -33,7 +32,6 @@ export default function MyTasks({ title = "My Development Tasks" }) {
 
   const getMappedStatus = (status) => statusMapping[status] || status;
 
-  // Group tasks for sections
   const todoTasks = tasks.filter(t => t.status === 'todo').map(t => ({ id: t._id.slice(-6).toUpperCase(), title: t.title, priority: t.priority || 'Medium', status: getMappedStatus(t.status) }));
   const activeTasks = tasks.filter(t => ['in-progress', 'review'].includes(t.status)).map(t => ({ id: t._id.slice(-6).toUpperCase(), title: t.title, priority: t.priority || 'Medium', status: getMappedStatus(t.status) }));
   const holdTasks = tasks.filter(t => t.status === 'on-hold').map(t => ({ id: t._id.slice(-6).toUpperCase(), title: t.title, priority: t.priority || 'Medium', status: getMappedStatus(t.status) }));
@@ -87,7 +85,6 @@ export default function MyTasks({ title = "My Development Tasks" }) {
 
   return (
     <div className="p-10 max-w-5xl mx-auto">
-      {/* Header */}
       <div className="mb-8">
         <h1 className="text-2xl font-bold text-white tracking-tight mb-4">{title}</h1>
         <div className="flex gap-6 border-b border-white/10 text-sm font-medium">
@@ -98,7 +95,6 @@ export default function MyTasks({ title = "My Development Tasks" }) {
         </div>
       </div>
 
-      {/* Task Sections */}
       {isLoading ? (
         <div className="flex justify-center items-center h-64">
           <Loader2 className="w-8 h-8 animate-spin text-cyan-400" />

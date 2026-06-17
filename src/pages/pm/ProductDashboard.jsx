@@ -32,7 +32,6 @@ export default function ProductDashboard() {
 
   return (
     <div className="p-8 max-w-6xl mx-auto">
-      {/* Header */}
       <div className="flex items-center justify-between mb-8">
         <div className="flex items-baseline gap-4">
           <h1 className="text-2xl font-bold text-white">Product Management Hub</h1>
@@ -44,10 +43,8 @@ export default function ProductDashboard() {
         </button>
       </div>
 
-      {/* Top Metrics Row */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
         
-        {/* Metric 1 */}
         <div className="bg-[#111116] border border-white/5 rounded-xl p-6 flex flex-col justify-between">
           <div className="text-sm text-gray-400 font-medium mb-4">Feature Delivery Rate</div>
           <div className="flex items-end justify-between">
@@ -59,7 +56,6 @@ export default function ProductDashboard() {
           </div>
         </div>
 
-        {/* Metric 2 */}
         <div className="bg-[#111116] border border-white/5 rounded-xl p-6 flex flex-col justify-between">
           <div className="text-sm text-gray-400 font-medium mb-4">Open Product Blockers</div>
           <div className="flex items-end justify-between">
@@ -78,7 +74,6 @@ export default function ProductDashboard() {
           </div>
         </div>
 
-        {/* Metric 3 */}
         <div className="bg-[#111116] border border-white/5 rounded-xl p-6 flex flex-col justify-between">
           <div className="text-sm text-gray-400 font-medium mb-4">Total Tasks Active</div>
           <div className="flex items-baseline justify-between">
@@ -89,7 +84,6 @@ export default function ProductDashboard() {
 
       </div>
 
-      {/* Overview */}
       <div className="bg-[#111116] border border-white/5 rounded-xl p-6">
         <h3 className="text-white font-semibold mb-4">Current Sprint Breakdown</h3>
         <div className="grid grid-cols-5 gap-4">

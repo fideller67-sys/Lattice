@@ -52,7 +52,6 @@ export default function DirectorAuditLogs() {
 
   return (
     <div className="p-8 max-w-5xl mx-auto">
-      {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
         <div>
           <h1 className="text-2xl font-bold text-white tracking-tight flex items-center gap-2">
@@ -67,7 +66,6 @@ export default function DirectorAuditLogs() {
         </button>
       </div>
 
-      {/* Logs Container */}
       <div className="bg-[#111116] border border-white/5 rounded-xl overflow-hidden">
         <div className="flex items-center justify-between p-6 pb-4 border-b border-white/5">
           <h2 className="text-sm font-bold text-white">Recent Audit Activity</h2>

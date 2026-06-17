@@ -110,7 +110,6 @@ export default function DynamicChannel({ channelName, subtitle, systemLogMode = 
 
   return (
     <div className="p-10 max-w-6xl mx-auto h-full flex flex-col">
-      {/* Header */}
       <div className="flex items-center justify-between mb-8 shrink-0">
         <div className="flex items-center gap-4">
           <h1 className="text-2xl font-bold text-white tracking-tight"># {channelName}</h1>
@@ -143,7 +142,6 @@ export default function DynamicChannel({ channelName, subtitle, systemLogMode = 
         </div>
       )}
 
-      {/* Message Feed */}
       <div className="flex-1 overflow-y-auto mb-6 bg-[#111116] border border-white/5 rounded-xl p-6">
         <div className="space-y-4">
           {messages.length === 0 ? (
@@ -154,7 +152,6 @@ export default function DynamicChannel({ channelName, subtitle, systemLogMode = 
               const isMe = msg.sender?._id === user?._id;
 
               if (!isChat) {
-                // System notification style
                 return (
                   <div key={msg._id} className="flex items-center justify-between p-3.5 bg-white/5 border border-white/5 rounded-xl">
                     <div className="flex items-center gap-4">
@@ -173,7 +170,6 @@ export default function DynamicChannel({ channelName, subtitle, systemLogMode = 
                 );
               }
 
-              // Normal Chat style
               return (
                 <div key={msg._id} className={`flex gap-4 ${isMe ? 'flex-row-reverse' : 'flex-row'}`}>
                   <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-indigo-500 flex items-center justify-center text-white text-xs font-bold shrink-0">
@@ -198,7 +194,6 @@ export default function DynamicChannel({ channelName, subtitle, systemLogMode = 
         </div>
       </div>
 
-      {/* Input */}
       <form onSubmit={handleSendMessage} className="relative shrink-0">
         <input
           type="text"

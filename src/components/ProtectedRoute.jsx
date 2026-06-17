@@ -18,9 +18,6 @@ export default function ProtectedRoute({ allowedRoles }) {
     return <Navigate to="/signin" state={{ from: location }} replace />;
   }
 
-  // Admin and Director can access everything
-  // PM can access PM and Developer
-  // Developer can access Developer
   
   let isAuthorized = false;
   
@@ -33,7 +30,6 @@ export default function ProtectedRoute({ allowedRoles }) {
   }
 
   if (!isAuthorized) {
-    // Redirect to their default dashboard based on their role
     const defaultRoute = user.role === 'director' || user.role === 'admin' 
       ? '/director/dashboard' 
       : user.role === 'pm' 

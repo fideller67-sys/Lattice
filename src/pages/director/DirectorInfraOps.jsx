@@ -34,7 +34,6 @@ export default function DirectorInfraOps() {
   const metrics = data?.metrics || [{}, {}, {}];
 
   const handleAcknowledgeAll = () => {
-    // Optimistically update UI
     const updated = localIncidents.map(inc => ({
       ...inc,
       status: 'RESOLVED',
@@ -53,7 +52,6 @@ export default function DirectorInfraOps() {
         error: 'Failed to connect.',
       }
     ).then(() => {
-      // Simulate opening a new tab
       window.open('https://app.datadoghq.com', '_blank');
     });
   };
@@ -64,7 +62,6 @@ export default function DirectorInfraOps() {
 
   return (
     <div className="p-8 max-w-5xl mx-auto">
-      {/* Header */}
       <div className="flex items-center justify-between mb-8">
         <h1 className="text-2xl font-bold text-white flex items-center gap-2">
           <span className="text-gray-500 font-light">#</span> Infra Ops
@@ -79,7 +76,6 @@ export default function DirectorInfraOps() {
         </div>
       </div>
 
-      {/* Metrics Row */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         <div className="bg-[#111116] border border-white/5 rounded-xl p-6">
           <div className="flex items-center gap-3 mb-2">
@@ -107,7 +103,6 @@ export default function DirectorInfraOps() {
         </div>
       </div>
 
-      {/* Incidents Table */}
       <div className="bg-[#111116] border border-white/5 rounded-xl overflow-hidden">
         <div className="p-6 border-b border-white/5 flex items-center justify-between">
           <h2 className="text-sm font-bold text-white">Recent Incidents & Alerts</h2>

@@ -28,10 +28,8 @@ export default function DynamicSprintBoard({ title = 'Sprint Board', subtitle })
   const [draggedTask, setDraggedTask] = useState(null);
   const [dragOverColumn, setDragOverColumn] = useState(null);
 
-  // Split Pane State
   const [selectedTask, setSelectedTask] = useState(null);
 
-  // New Issue form state
   const [newTitle, setNewTitle] = useState('');
   const [newDescription, setNewDescription] = useState('');
   const [newPriority, setNewPriority] = useState('Medium');
@@ -45,7 +43,6 @@ export default function DynamicSprintBoard({ title = 'Sprint Board', subtitle })
     fetchUsers();
   }, []);
 
-  // Update selectedTask reference when tasks update
   useEffect(() => {
     if (selectedTask) {
       const updated = tasks.find(t => t._id === selectedTask._id);
@@ -105,7 +102,6 @@ export default function DynamicSprintBoard({ title = 'Sprint Board', subtitle })
     }
   };
 
-  // --- Drag & Drop Handlers ---
   const handleDragStart = (e, task) => {
     setDraggedTask(task);
     e.dataTransfer.effectAllowed = 'move';
@@ -135,7 +131,6 @@ export default function DynamicSprintBoard({ title = 'Sprint Board', subtitle })
 
     const taskId = draggedTask._id;
 
-    // Optimistic update
     setTasks((prev) =>
       prev.map((t) => (t._id === taskId ? { ...t, status: newStatus } : t))
     );
@@ -144,7 +139,6 @@ export default function DynamicSprintBoard({ title = 'Sprint Board', subtitle })
       await api.put(`/tasks/${taskId}`, { status: newStatus });
     } catch (err) {
       console.error('Failed to update task:', err);
-      // Revert on error
       setTasks((prev) =>
         prev.map((t) => (t._id === taskId ? { ...t, status: draggedTask.status } : t))
       );
@@ -155,7 +149,6 @@ export default function DynamicSprintBoard({ title = 'Sprint Board', subtitle })
     if (!selectedTask) return;
     const taskId = selectedTask._id;
     
-    // Optimistic update
     setTasks((prev) =>
       prev.map((t) => (t._id === taskId ? { ...t, [field]: value } : t))
     );
@@ -164,7 +157,6 @@ export default function DynamicSprintBoard({ title = 'Sprint Board', subtitle })
       await api.put(`/tasks/${taskId}`, { [field]: value });
     } catch (err) {
       console.error(`Failed to update ${field}:`, err);
-      // Revert on error
       setTasks((prev) =>
         prev.map((t) => (t._id === taskId ? { ...t, [field]: selectedTask[field] } : t))
       );
@@ -183,7 +175,6 @@ export default function DynamicSprintBoard({ title = 'Sprint Board', subtitle })
 
   return (
     <div className="flex flex-col h-full bg-[#0a0a0f]">
-      {/* Header */}
       <div className="px-10 py-6 border-b border-white/5 flex items-center justify-between shrink-0">
         <div>
           <h1 className="text-2xl font-bold text-white tracking-tight flex items-center gap-2">
@@ -205,10 +196,8 @@ export default function DynamicSprintBoard({ title = 'Sprint Board', subtitle })
         </div>
       )}
 
-      {/* Main Content Area (Split Pane) */}
       <div className="flex-1 flex overflow-hidden relative">
         
-        {/* Board Area */}
         <div className="flex-1 overflow-x-auto p-10 custom-scrollbar">
           <div className="flex gap-6 min-w-max h-full">
             {STATUS_COLUMNS.map((col) => {
@@ -285,10 +274,8 @@ export default function DynamicSprintBoard({ title = 'Sprint Board', subtitle })
           </div>
         </div>
 
-        {/* Task Details Right Panel */}
         {selectedTask && (
           <div className="w-[450px] shrink-0 border-l border-white/5 bg-[#0d0d12] overflow-y-auto custom-scrollbar flex flex-col animate-in slide-in-from-right duration-200">
-            {/* Panel Header */}
             <div className="px-6 py-5 border-b border-white/5 flex items-center justify-between sticky top-0 bg-[#0d0d12]/80 backdrop-blur-md z-10">
               <div className="flex items-center gap-3">
                 <span className="text-xs font-mono font-bold text-gray-400 tracking-wider">
@@ -305,10 +292,8 @@ export default function DynamicSprintBoard({ title = 'Sprint Board', subtitle })
               </div>
             </div>
 
-            {/* Panel Content */}
             <div className="p-6">
               
-              {/* Properties Grid */}
               <div className="grid grid-cols-2 gap-x-8 gap-y-4 mb-8">
                 <div className="flex items-center justify-between text-sm">
                   <span className="text-gray-500 font-medium">Status</span>
@@ -358,12 +343,10 @@ export default function DynamicSprintBoard({ title = 'Sprint Board', subtitle })
                 </div>
               </div>
 
-              {/* Title */}
               <h2 className="text-2xl font-bold text-white mb-6 leading-tight">
                 {selectedTask.title}
               </h2>
 
-              {/* Overview */}
               <div className="mb-8">
                 <h3 className="text-sm font-bold text-white mb-3 flex items-center gap-2">
                   <span className="text-gray-500">##</span> Overview
@@ -373,13 +356,11 @@ export default function DynamicSprintBoard({ title = 'Sprint Board', subtitle })
                 </div>
               </div>
 
-              {/* Media Placeholder */}
               <div className="mb-8 bg-[#16161c] border border-white/5 rounded-xl aspect-video flex flex-col items-center justify-center text-gray-500 cursor-pointer hover:bg-white/[0.03] transition-colors group">
                 <Image className="w-8 h-8 mb-2 opacity-50 group-hover:opacity-100 transition-opacity" />
                 <span className="text-xs font-medium">Auth Flow Diagram</span>
               </div>
 
-              {/* Checklist */}
               <div>
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="text-sm font-bold text-white flex items-center gap-2">
@@ -419,7 +400,6 @@ export default function DynamicSprintBoard({ title = 'Sprint Board', subtitle })
                 </div>
               </div>
 
-              {/* Activity Log Placeholder */}
               <div className="mt-10 pt-6 border-t border-white/5">
                 <div className="flex items-center justify-between text-xs text-gray-500">
                   <span className="flex items-center gap-1"><Activity className="w-3 h-3" /> Activity</span>
@@ -431,7 +411,6 @@ export default function DynamicSprintBoard({ title = 'Sprint Board', subtitle })
         )}
       </div>
 
-      {/* New Issue Modal */}
       {showNewIssue && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50">
           <div className="bg-[#111116] border border-white/10 rounded-2xl w-full max-w-lg p-8 shadow-2xl">
@@ -448,7 +427,6 @@ export default function DynamicSprintBoard({ title = 'Sprint Board', subtitle })
                   {formError}
                 </div>
               )}
-              {/* Title */}
               <div>
                 <label className="text-xs font-medium text-gray-400 mb-1.5 block">Title *</label>
                 <input
@@ -462,7 +440,6 @@ export default function DynamicSprintBoard({ title = 'Sprint Board', subtitle })
                 />
               </div>
 
-              {/* Description */}
               <div>
                 <label className="text-xs font-medium text-gray-400 mb-1.5 block">Description</label>
                 <textarea
@@ -474,7 +451,6 @@ export default function DynamicSprintBoard({ title = 'Sprint Board', subtitle })
                 />
               </div>
 
-              {/* Row: Priority & Status */}
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="text-xs font-medium text-gray-400 mb-1.5 block">Priority</label>
@@ -502,7 +478,6 @@ export default function DynamicSprintBoard({ title = 'Sprint Board', subtitle })
                 </div>
               </div>
 
-              {/* Assignee */}
               <div>
                 <label className="text-xs font-medium text-gray-400 mb-1.5 block">Assign To</label>
                 <select
@@ -517,7 +492,6 @@ export default function DynamicSprintBoard({ title = 'Sprint Board', subtitle })
                 </select>
               </div>
 
-              {/* Submit */}
               <button
                 type="submit"
                 disabled={isSubmitting || !newTitle.trim()}

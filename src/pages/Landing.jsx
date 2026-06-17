@@ -7,7 +7,6 @@ export default function Landing() {
   return (
     <div className="min-h-screen bg-[#0a0a0f] text-white selection:bg-purple-500/30 font-sans">
       
-      {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 bg-[#0a0a0f]/80 backdrop-blur-md border-b border-white/5">
         <div className="flex items-center gap-8">
           <Link to="/" className="flex items-center gap-2 font-bold text-xl tracking-tight">
@@ -31,10 +30,8 @@ export default function Landing() {
         </div>
       </nav>
 
-      {/* Hero Section */}
       <section className="pt-40 pb-20 px-6 flex flex-col items-center text-center relative">
         
-        {/* Background Gradients */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-[400px] bg-blue-600/20 blur-[120px] rounded-full pointer-events-none" />
 
         <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-gray-300 mb-8 backdrop-blur-sm">
@@ -72,13 +69,11 @@ export default function Landing() {
           No credit card required - Free for teams up to 5
         </p>
 
-        {/* Kanban Board Mockup */}
         <div className="mt-10 w-full max-w-6xl">
           <BoardMockup />
         </div>
       </section>
 
-      {/* Features Section */}
       <section className="py-24 px-6 relative">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
@@ -89,7 +84,6 @@ export default function Landing() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {/* Feature 1 */}
             <div className="bg-[#111116] border border-white/5 rounded-2xl p-6 hover:border-purple-500/30 transition-colors group">
               <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                 <RefreshCcw className="w-6 h-6 text-blue-400" />
@@ -100,7 +94,6 @@ export default function Landing() {
               </p>
             </div>
 
-            {/* Feature 2 */}
             <div className="bg-[#111116] border border-white/5 rounded-2xl p-6 hover:border-purple-500/30 transition-colors group">
               <div className="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                 <Command className="w-6 h-6 text-purple-400" />
@@ -111,7 +104,6 @@ export default function Landing() {
               </p>
             </div>
 
-            {/* Feature 3 */}
             <div className="bg-[#111116] border border-white/5 rounded-2xl p-6 hover:border-purple-500/30 transition-colors group">
               <div className="w-12 h-12 rounded-xl bg-indigo-500/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                 <GitMerge className="w-6 h-6 text-indigo-400" />
@@ -122,7 +114,6 @@ export default function Landing() {
               </p>
             </div>
 
-            {/* Feature 4 */}
             <div className="bg-[#111116] border border-white/5 rounded-2xl p-6 hover:border-purple-500/30 transition-colors group">
               <div className="w-12 h-12 rounded-xl bg-teal-500/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                 <GanttChart className="w-6 h-6 text-teal-400" />
@@ -136,7 +127,6 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* Footer */}
       <footer className="border-t border-white/5 py-12 text-center text-gray-500 text-sm">
         <p>&copy; 2026 Lattice. All rights reserved.</p>
       </footer>

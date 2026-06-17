@@ -32,7 +32,6 @@ export default function DirectorDashboard() {
 
   return (
     <div className="p-8 max-w-6xl mx-auto">
-      {/* Header */}
       <div className="flex items-center justify-between mb-8">
         <div className="flex items-center gap-4">
           <h1 className="text-2xl font-bold text-white tracking-tight">Engineering Organization Oversight</h1>
@@ -46,10 +45,8 @@ export default function DirectorDashboard() {
         </button>
       </div>
 
-      {/* Top Metrics Row */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
         
-        {/* Headcount Card */}
         <div className="bg-[#111116] border border-white/5 rounded-xl p-6">
           <div className="text-xs text-gray-500 font-medium mb-4">Total Engineering Headcount</div>
           <div className="text-3xl font-bold text-white tracking-tight mb-2">{stats?.memberCount || 0} Active Members</div>
@@ -58,7 +55,6 @@ export default function DirectorDashboard() {
           </div>
         </div>
 
-        {/* Delivery Index Card */}
         <div className="bg-[#111116] border border-white/5 rounded-xl p-6">
           <div className="text-xs text-gray-500 font-medium mb-4">Cross-Project Delivery Index</div>
           <div className="text-3xl font-bold text-white tracking-tight mb-2">{stats?.velocity || 0}%</div>
@@ -68,7 +64,6 @@ export default function DirectorDashboard() {
           </div>
         </div>
 
-        {/* Tasks Overview */}
         <div className="bg-[#111116] border border-white/5 rounded-xl p-6">
           <div className="text-xs text-gray-500 font-medium mb-4">Task Distribution</div>
           <div className="text-3xl font-bold text-white tracking-tight mb-2">{stats?.totalTasks || 0} Total</div>
@@ -79,7 +74,6 @@ export default function DirectorDashboard() {
 
       </div>
 
-      {/* Task Status Visual */}
       <div className="bg-[#111116] border border-white/5 rounded-xl p-6 mb-6">
         <div className="flex justify-between text-xs text-gray-400 mb-3 font-medium">
           <span>Overall Sprint Progress</span>

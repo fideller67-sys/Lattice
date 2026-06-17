@@ -33,7 +33,6 @@ export default function DirectorMobileSdk() {
 
   return (
     <div className="p-8 max-w-5xl mx-auto">
-      {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
         <div>
           <div className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2 flex items-center gap-2">
@@ -42,7 +41,6 @@ export default function DirectorMobileSdk() {
           <h1 className="text-2xl font-bold text-white tracking-tight">Mobile Ecosystem Market Readiness Capital Portfolio</h1>
         </div>
 
-        {/* Toggle Days/Weeks */}
         <div className="flex items-center bg-[#111116] border border-white/5 rounded-lg p-1 w-fit">
           {['Days', 'Weeks'].map(option => (
             <button
@@ -60,7 +58,6 @@ export default function DirectorMobileSdk() {
         </div>
       </div>
 
-      {/* Portfolio Track Banner */}
       <div className="bg-emerald-900/20 border border-emerald-500/20 rounded-xl p-5 mb-8 flex items-start gap-3">
         <div className="w-8 h-8 rounded-lg bg-emerald-500/20 flex items-center justify-center text-emerald-400 flex-shrink-0 mt-0.5">
           <Shield className="w-4 h-4" />
@@ -75,7 +72,6 @@ export default function DirectorMobileSdk() {
         </div>
       </div>
 
-      {/* Mobile Platform Risk Checklist */}
       <div className="bg-[#111116] border border-white/5 rounded-xl overflow-hidden">
         <div className="flex items-center justify-between p-6 pb-4 border-b border-white/5">
           <h2 className="text-sm font-bold text-white">Mobile Platform Risk Checklist</h2>

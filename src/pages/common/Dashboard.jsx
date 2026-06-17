@@ -30,7 +30,6 @@ export default function Dashboard() {
 
   return (
     <div className="p-10 max-w-7xl mx-auto">
-      {/* Header */}
       <div className="flex items-center justify-between mb-10">
         <div className="flex items-center gap-4">
           <h1 className="text-2xl font-bold text-white tracking-tight">Developer Command Center</h1>
@@ -41,9 +40,7 @@ export default function Dashboard() {
         </div>
       </div>
 
-      {/* Top Metrics Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">
-        {/* Velocity */}
         <div className="bg-[#111116] border border-white/5 rounded-2xl p-6">
           <div className="text-gray-400 text-sm font-medium mb-4">Sprint Velocity</div>
           <div className="flex items-end justify-between">
@@ -55,7 +52,6 @@ export default function Dashboard() {
           </div>
         </div>
 
-        {/* High Priority Open */}
         <div className="bg-[#111116] border border-white/5 rounded-2xl p-6">
           <div className="text-gray-400 text-sm font-medium mb-4">Open Blockers</div>
           <div className="flex items-end justify-between">
@@ -74,7 +70,6 @@ export default function Dashboard() {
           </div>
         </div>
 
-        {/* Total Tasks */}
         <div className="bg-[#111116] border border-white/5 rounded-2xl p-6">
           <div className="text-gray-400 text-sm font-medium mb-4">Total Tasks</div>
           <div className="flex items-end justify-between">
@@ -85,7 +80,6 @@ export default function Dashboard() {
           </div>
         </div>
 
-        {/* Team Members */}
         <div className="bg-[#111116] border border-white/5 rounded-2xl p-6">
           <div className="text-gray-400 text-sm font-medium mb-4">Team Members</div>
           <div className="flex items-end justify-between">
@@ -97,7 +91,6 @@ export default function Dashboard() {
         </div>
       </div>
 
-      {/* Task Status Breakdown */}
       <div className="mb-6 text-[10px] font-bold text-gray-500 uppercase tracking-widest">
         Task Status Breakdown
       </div>
@@ -120,7 +113,6 @@ export default function Dashboard() {
         ))}
       </div>
 
-      {/* Progress Bar */}
       {stats?.totalTasks > 0 && (
         <div className="bg-[#111116] border border-white/5 rounded-xl p-6">
           <div className="flex justify-between text-xs text-gray-400 mb-3 font-medium">

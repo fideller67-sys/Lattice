@@ -88,7 +88,6 @@ export default function DirectorBillingV2() {
 
   return (
     <div className="p-8 max-w-6xl mx-auto">
-      {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
         <div>
           <div className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2 flex items-center gap-2">
@@ -97,7 +96,6 @@ export default function DirectorBillingV2() {
           <h1 className="text-2xl font-bold text-white tracking-tight">Global Billing Transformation Allocation Audits</h1>
         </div>
 
-        {/* Toggle */}
         <div className="flex items-center gap-3">
           <div className="flex items-center bg-[#111116] border border-white/5 rounded-lg p-1 w-fit">
             {['Monthly', 'Quarterly', 'Annual'].map(option => (
@@ -117,7 +115,6 @@ export default function DirectorBillingV2() {
         </div>
       </div>
 
-      {/* Portfolio Track Banner */}
       <div className="bg-amber-900/20 border border-amber-500/20 rounded-xl p-5 mb-8 flex items-start gap-3">
         <div className="w-8 h-8 rounded-lg bg-amber-500/20 flex items-center justify-center text-amber-400 flex-shrink-0 mt-0.5">
           <AlertTriangle className="w-4 h-4" />
@@ -132,7 +129,6 @@ export default function DirectorBillingV2() {
         </div>
       </div>
 
-      {/* Three Column Risk Overview */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
         {billingColumns.map((col, idx) => (
           <div key={idx} className="bg-[#111116] border border-white/5 rounded-xl p-5">
@@ -151,7 +147,6 @@ export default function DirectorBillingV2() {
         ))}
       </div>
 
-      {/* Director-Level Risk Assessment Items */}
       <div className="bg-[#111116] border border-white/5 rounded-xl overflow-hidden mb-8">
         <div className="flex items-center justify-between p-6 pb-4 border-b border-white/5">
           <h2 className="text-sm font-bold text-white">Director-Level Risk Assessment Items</h2>
@@ -182,7 +177,6 @@ export default function DirectorBillingV2() {
         </div>
       </div>
 
-      {/* Business Risk Items */}
       <div className="bg-[#111116] border border-white/5 rounded-xl overflow-hidden">
         <div className="flex items-center justify-between p-6 pb-4 border-b border-white/5">
           <h2 className="text-sm font-bold text-white">Business Risk Items</h2>

@@ -64,7 +64,6 @@ export default function Inbox({ roleTitle = "Notification Inbox" }) {
 
   return (
     <div className="p-10 max-w-5xl mx-auto">
-      {/* Header */}
       <div className="flex items-center justify-between mb-8">
         <div>
           <h1 className="text-2xl font-bold text-white tracking-tight mb-1">{roleTitle}</h1>
@@ -81,7 +80,6 @@ export default function Inbox({ roleTitle = "Notification Inbox" }) {
         </div>
       </div>
 
-      {/* Notifications List */}
       <div className="space-y-2">
         {isLoading ? (
           <div className="flex justify-center p-10">

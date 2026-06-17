@@ -41,7 +41,6 @@ export default function DirectorCoreAuthRevamp() {
 
   return (
     <div className="p-8 max-w-5xl mx-auto">
-      {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
         <div>
           <div className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2 flex items-center gap-2">
@@ -50,7 +49,6 @@ export default function DirectorCoreAuthRevamp() {
           <h1 className="text-2xl font-bold text-white tracking-tight">Identity Security Capital Investment Audit</h1>
         </div>
 
-        {/* Toggle Days/Weeks */}
         <div className="flex items-center bg-[#111116] border border-white/5 rounded-lg p-1 w-fit">
           {['Days', 'Weeks'].map(option => (
             <button
@@ -68,7 +66,6 @@ export default function DirectorCoreAuthRevamp() {
         </div>
       </div>
 
-      {/* Top Metric Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
         <div className="bg-[#111116] border border-white/5 rounded-xl p-5 hover:border-white/10 transition-colors">
           <div className="flex items-center gap-2 mb-3 text-xs font-bold text-gray-500">
@@ -93,7 +90,6 @@ export default function DirectorCoreAuthRevamp() {
         </div>
       </div>
 
-      {/* Organizational Milestone Dependencies */}
       <div className="bg-[#111116] border border-white/5 rounded-xl overflow-hidden">
         <div className="p-6 pb-4 border-b border-white/5">
           <h2 className="text-sm font-bold text-white mb-1">Organizational Milestone Dependencies</h2>

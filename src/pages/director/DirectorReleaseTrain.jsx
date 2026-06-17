@@ -8,7 +8,6 @@ export default function DirectorReleaseTrain() {
   const [localReleases, setLocalReleases] = useState([]);
   const [loading, setLoading] = useState(true);
   
-  // Modal State
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [newReleaseName, setNewReleaseName] = useState('');
   const [newReleaseDate, setNewReleaseDate] = useState('');
@@ -63,7 +62,6 @@ export default function DirectorReleaseTrain() {
 
   return (
     <div className="p-8 max-w-5xl mx-auto">
-      {/* Header */}
       <div className="flex items-center justify-between mb-8">
         <h1 className="text-2xl font-bold text-white flex items-center gap-2">
           <span className="text-gray-500 font-light">#</span> Release Train
@@ -79,7 +77,6 @@ export default function DirectorReleaseTrain() {
         </div>
       </div>
 
-      {/* Metrics Row */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         <div className="bg-[#111116] border border-white/5 rounded-xl p-6">
           <div className="flex items-center gap-3 mb-2">
@@ -107,7 +104,6 @@ export default function DirectorReleaseTrain() {
         </div>
       </div>
 
-      {/* Releases Table */}
       <div className="bg-[#111116] border border-white/5 rounded-xl overflow-hidden">
         <div className="p-6 border-b border-white/5 flex items-center justify-between">
           <h2 className="text-sm font-bold text-white">Upcoming & Active Releases</h2>
@@ -160,7 +156,6 @@ export default function DirectorReleaseTrain() {
         </div>
       </div>
 
-      {/* Modal Overlay */}
       {isModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
           <div className="bg-[#111116] border border-white/10 rounded-2xl w-full max-w-md shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-200">

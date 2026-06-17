@@ -23,7 +23,6 @@ import ReleaseTrain from './pages/developer/ReleaseTrain';
 import ProjectDetails from './pages/developer/ProjectDetails';
 import GenericChannel from './pages/common/GenericChannel';
 
-// PM Role Imports
 import ProductManagerLayout from './layouts/ProductManagerLayout';
 import ProductDashboard from './pages/pm/ProductDashboard';
 import ProductInbox from './pages/pm/ProductInbox';
@@ -35,7 +34,6 @@ import ProductInfraOps from './pages/pm/ProductInfraOps';
 import ProductQaAutomation from './pages/pm/ProductQaAutomation';
 import ProductReleaseTrain from './pages/pm/ProductReleaseTrain';
 
-// Director Role Imports
 import DirectorLayout from './layouts/DirectorLayout';
 import DirectorDashboard from './pages/director/DirectorDashboard';
 import DirectorInbox from './pages/director/DirectorInbox';
@@ -75,7 +73,6 @@ function App() {
         <Route path="/connect-github" element={<ConnectGithub />} />
         <Route path="/auth/callback" element={<AuthCallback />} />
         
-        {/* Developer Role Routes */}
         <Route element={<ProtectedRoute allowedRoles={['developer']} />}>
           <Route path="/developer" element={<DeveloperLayout />}>
             <Route index element={<Navigate to="dashboard" replace />} />
@@ -95,7 +92,6 @@ function App() {
 
         <Route path="/board" element={<Navigate to="/developer/dashboard" replace />} />
         
-        {/* Product Manager Role Routes */}
         <Route element={<ProtectedRoute allowedRoles={['pm']} />}>
           <Route path="/pm" element={<ProductManagerLayout />}>
             <Route index element={<Navigate to="dashboard" replace />} />
@@ -113,7 +109,6 @@ function App() {
           </Route>
         </Route>
 
-        {/* Director Role Routes */}
         <Route element={<ProtectedRoute allowedRoles={['director', 'admin']} />}>
           <Route path="/director" element={<DirectorLayout />}>
             <Route index element={<Navigate to="dashboard" replace />} />

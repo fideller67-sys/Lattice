@@ -12,7 +12,6 @@ export default function DirectorSidebar() {
   const [projects, setProjects] = useState([]);
   const [showProfileMenu, setShowProfileMenu] = useState(false);
   
-  // Modals state
   const [showChannelModal, setShowChannelModal] = useState(false);
   const [showProjectModal, setShowProjectModal] = useState(false);
   const [newItemName, setNewItemName] = useState('');
@@ -84,7 +83,6 @@ export default function DirectorSidebar() {
 
   return (
     <div className="w-64 h-screen bg-[#0a0a0f] border-r border-white/5 flex flex-col relative shadow-[4px_0_24px_rgba(0,0,0,0.5)] z-10">
-      {/* Brand Header */}
       <div className="px-6 py-6 flex items-center gap-3 font-extrabold text-xl tracking-tight">
         <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-blue-500 via-indigo-500 to-purple-600 flex items-center justify-center shadow-lg shadow-blue-500/20">
           <div className="w-3.5 h-3.5 bg-white rounded-sm" />
@@ -96,7 +94,6 @@ export default function DirectorSidebar() {
 
       <div className="flex-1 overflow-y-auto scrollbar-hide px-3 py-2 flex flex-col">
         <div className="space-y-8 flex-1">
-          {/* Workspace Section */}
           <div>
             <div className="px-3 mb-3 text-[10px] font-bold text-gray-500 uppercase tracking-widest">
               Workspace
@@ -130,7 +127,6 @@ export default function DirectorSidebar() {
             </div>
           </div>
 
-          {/* Metric Dashboards Section */}
           <div>
             <div className="px-3 mb-3 text-[10px] font-bold text-gray-500 uppercase tracking-widest">
               Metric Dashboards
@@ -159,7 +155,6 @@ export default function DirectorSidebar() {
             </div>
           </div>
 
-          {/* Messaging Channels Section */}
           <div>
             <div className="px-3 mb-3 text-[10px] font-bold text-indigo-400/70 uppercase tracking-widest flex items-center justify-between">
               <span>Messaging Channels</span>
@@ -172,7 +167,6 @@ export default function DirectorSidebar() {
                 </NavLink>
               ))}
               
-              {/* BEAUTIFUL ADD BUTTON */}
               <button 
                 onClick={() => setShowChannelModal(true)} 
                 className="flex items-center gap-3 px-3 py-2 mt-2 w-full rounded-xl text-sm font-medium text-gray-500 hover:text-white hover:bg-white/5 transition-all duration-300 group"
@@ -185,7 +179,6 @@ export default function DirectorSidebar() {
             </div>
           </div>
 
-          {/* Projects Section */}
           <div>
             <div className="px-3 mb-3 text-[10px] font-bold text-indigo-400/70 uppercase tracking-widest flex items-center justify-between">
               <span>Projects</span>
@@ -198,7 +191,6 @@ export default function DirectorSidebar() {
                 </NavLink>
               ))}
 
-              {/* BEAUTIFUL ADD BUTTON */}
               <button 
                 onClick={() => setShowProjectModal(true)} 
                 className="flex items-center gap-3 px-3 py-2 mt-2 w-full rounded-xl text-sm font-medium text-gray-500 hover:text-white hover:bg-white/5 transition-all duration-300 group"
@@ -211,7 +203,6 @@ export default function DirectorSidebar() {
             </div>
           </div>
 
-          {/* Administration Section */}
           <div>
             <div className="px-3 mb-3 text-[10px] font-bold text-gray-500 uppercase tracking-widest">
               Administration
@@ -229,7 +220,6 @@ export default function DirectorSidebar() {
           </div>
         </div>
 
-        {/* Action Links */}
         <div className="mt-8 mb-4">
           <NavLink
             to="/director/admin"
@@ -241,7 +231,6 @@ export default function DirectorSidebar() {
         </div>
       </div>
 
-      {/* Floating Glassmorphic User Profile */}
       <div className="p-3">
         {showProfileMenu && (
           <div className="absolute bottom-[80px] left-3 right-3 bg-[#111116] border border-white/10 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.8)] overflow-hidden z-50 transform origin-bottom animate-in fade-in slide-in-from-bottom-2 duration-200">
@@ -266,7 +255,6 @@ export default function DirectorSidebar() {
         </div>
       </div>
 
-      {/* Modals with Glassmorphism */}
       {(showChannelModal || showProjectModal) && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-md flex items-center justify-center z-[100] animate-in fade-in duration-200">
           <div className="bg-[#0f111a] border border-white/10 rounded-3xl w-full max-w-md p-7 shadow-[0_20px_60px_rgba(0,0,0,0.8)] transform scale-100">

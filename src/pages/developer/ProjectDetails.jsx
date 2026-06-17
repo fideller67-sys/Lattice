@@ -72,10 +72,8 @@ export default function ProjectDetails() {
 
   return (
     <div className="p-10 max-w-5xl mx-auto">
-      {/* Breadcrumb */}
       <div className="text-xs text-gray-500 mb-2">Projects &gt; {project.name}</div>
 
-      {/* Header */}
       <div className="flex items-center justify-between mb-8">
         <h1 className="text-2xl font-bold text-white tracking-tight">Epic Milestone Analysis</h1>
         <div className="flex items-center gap-4">
@@ -93,11 +91,9 @@ export default function ProjectDetails() {
         </div>
       </div>
 
-      {/* Epics */}
       <div className="space-y-8">
         {project.epics.map((epic, epicIdx) => (
           <div key={epicIdx}>
-            {/* Epic Header Bar */}
             <div className={`${epic.color} rounded-t-xl px-5 py-3 flex items-center gap-2`}>
               <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -105,7 +101,6 @@ export default function ProjectDetails() {
               <span className="text-sm font-bold text-white uppercase tracking-wider">{epic.name}</span>
             </div>
 
-            {/* Epic Progress Bar */}
             <div className="bg-[#111116] border-x border-white/5 px-5 py-1">
               <div className="h-1 bg-white/5 rounded-full">
                 <div 
@@ -115,7 +110,6 @@ export default function ProjectDetails() {
               </div>
             </div>
 
-            {/* Tasks */}
             <div className="bg-[#111116] border border-white/5 rounded-b-xl overflow-hidden divide-y divide-white/5">
               {epic.tasks.map((task) => (
                 <div 

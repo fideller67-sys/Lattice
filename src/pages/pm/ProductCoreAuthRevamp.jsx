@@ -35,7 +35,6 @@ export default function ProductCoreAuthRevamp() {
 
   return (
     <div className="p-8 max-w-5xl mx-auto">
-      {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
         <div>
           <div className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2 flex items-center gap-2">
@@ -44,17 +43,14 @@ export default function ProductCoreAuthRevamp() {
           <h1 className="text-2xl font-bold text-white">User Security & Authentication Epic Roadmap</h1>
         </div>
         
-        {/* Toggle Days/Weeks */}
         <div className="flex items-center bg-[#111116] border border-white/5 rounded-lg p-1 w-fit">
           <button className="px-4 py-1.5 text-sm font-medium text-gray-400 hover:text-white transition-colors">Days</button>
           <button className="px-4 py-1.5 text-sm font-medium bg-white/10 text-white rounded-md">Weeks</button>
         </div>
       </div>
 
-      {/* Epic Section */}
       <div className="bg-[#111116] border border-white/5 rounded-xl overflow-hidden">
         
-        {/* Epic Header */}
         <div className="bg-blue-900/20 border-b border-blue-500/20 p-5 flex items-center gap-3">
           <div className="w-8 h-8 rounded-lg bg-blue-500/20 flex items-center justify-center text-blue-400">
             <Code2 className="w-4 h-4" />
@@ -62,7 +58,6 @@ export default function ProductCoreAuthRevamp() {
           <h2 className="text-sm font-bold text-blue-400 tracking-widest uppercase">Epic: Enterprise Access Control</h2>
         </div>
 
-        {/* Epic Tasks List */}
         <div className="divide-y divide-white/5">
           {epicTasks.map((task, idx) => (
             <div key={idx} className="flex items-center justify-between p-5 hover:bg-white/[0.02] transition-colors">

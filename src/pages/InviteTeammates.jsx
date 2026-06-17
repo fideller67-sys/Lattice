@@ -54,7 +54,6 @@ export default function InviteTeammates() {
         </div>
       </form>
 
-      {/* Progress Dots */}
       <div className="flex justify-center gap-2 mt-16">
         <div className="w-1.5 h-1.5 rounded-full bg-white/20"></div>
         <div className="w-1.5 h-1.5 rounded-full bg-white"></div>

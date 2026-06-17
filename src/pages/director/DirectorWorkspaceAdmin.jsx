@@ -81,7 +81,6 @@ export default function DirectorWorkspaceAdmin() {
 
   return (
     <div className="p-8 max-w-5xl mx-auto">
-      {/* Header */}
       <div className="mb-8">
         <div className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">
           Director-level controls for Engineering Organization workspace
@@ -89,7 +88,6 @@ export default function DirectorWorkspaceAdmin() {
         <h1 className="text-2xl font-bold text-white tracking-tight">Workspace Administration</h1>
       </div>
 
-      {/* Active Members Card */}
       <div className="bg-[#111116] border border-white/5 rounded-xl p-6 mb-6 flex items-center justify-between">
         <div className="flex items-center gap-6">
           <div>
@@ -109,7 +107,6 @@ export default function DirectorWorkspaceAdmin() {
         </button>
       </div>
 
-      {/* Members Table */}
       <div className="bg-[#111116] border border-white/5 rounded-xl overflow-hidden mb-6">
         <div className="p-6 pb-4 border-b border-white/5">
           <h2 className="text-sm font-bold text-white flex items-center gap-2">
@@ -160,7 +157,6 @@ export default function DirectorWorkspaceAdmin() {
         )}
       </div>
 
-      {/* Security Configuration */}
       <div className="bg-[#111116] border border-white/5 rounded-xl overflow-hidden mb-6">
         <div className="p-6 pb-4 border-b border-white/5">
           <h2 className="text-sm font-bold text-white flex items-center gap-2">
@@ -192,7 +188,6 @@ export default function DirectorWorkspaceAdmin() {
         </div>
       </div>
 
-      {/* Admin Quick Links */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <button className="bg-[#111116] border border-white/5 rounded-xl p-5 flex items-center gap-4 hover:bg-white/[0.02] hover:border-white/10 transition-colors text-left group">
           <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-gray-400 group-hover:text-white transition-colors">
@@ -218,7 +213,6 @@ export default function DirectorWorkspaceAdmin() {
         </button>
       </div>
 
-      {/* Invite Modal */}
       {inviteModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center">
           <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setInviteModalOpen(false)} />

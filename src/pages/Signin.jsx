@@ -32,9 +32,7 @@ export default function Signin() {
   return (
     <div className="flex min-h-screen bg-[#0a0a0f] text-white font-sans selection:bg-blue-500/30">
       
-      {/* Left Panel - Visuals & Quote */}
       <div className="hidden lg:flex flex-1 relative bg-[#06060a] border-r border-white/5 flex-col justify-between p-12 overflow-hidden">
-        {/* Deep blue gradient glow */}
         <div className="absolute top-1/2 right-0 -translate-y-1/2 translate-x-1/4 w-[800px] h-[800px] bg-blue-600/20 blur-[150px] rounded-full pointer-events-none" />
         
         <div className="relative z-10 flex items-center gap-2 font-bold text-xl tracking-tight">
@@ -64,7 +62,6 @@ export default function Signin() {
           </div>
         </div>
 
-        {/* Pagination Dots */}
         <div className="relative z-10 flex gap-2">
           <div className="w-2 h-2 rounded-full bg-blue-500" />
           <div className="w-2 h-2 rounded-full bg-white/20" />
@@ -72,7 +69,6 @@ export default function Signin() {
         </div>
       </div>
 
-      {/* Right Panel - Forms */}
       <div className="flex-1 flex flex-col justify-center px-8 sm:px-16 md:px-24 lg:px-32 relative bg-[#0a0a0f]">
         
         <div className="w-full max-w-md mx-auto">

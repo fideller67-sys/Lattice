@@ -8,7 +8,6 @@ export default function ConnectGithub() {
 
   const handleContinue = (e) => {
     e.preventDefault();
-    // Redirect to backend endpoint which will handle GitHub OAuth
     window.location.href = `${import.meta.env.VITE_API_URL || 'http://localhost:5000/api'}/auth/github`;
   };
 
@@ -67,7 +66,6 @@ export default function ConnectGithub() {
         </button>
       </div>
 
-      {/* Progress Dots */}
       <div className="flex justify-center gap-2 mt-16">
         <div className="w-1.5 h-1.5 rounded-full bg-white/20"></div>
         <div className="w-1.5 h-1.5 rounded-full bg-white/20"></div>

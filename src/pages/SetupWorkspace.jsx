@@ -16,7 +16,6 @@ export default function SetupWorkspace() {
     e.preventDefault();
     if (!workspaceName) return;
 
-    // Map UI role to backend role
     const roleMap = {
       'Developer': 'developer',
       'Product Manager': 'pm',

@@ -13,7 +13,6 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Check for token on load
     const token = localStorage.getItem('token');
     const storedUser = localStorage.getItem('user');
     
@@ -26,7 +25,6 @@ export const AuthProvider = ({ children }) => {
   const login = async (email, password) => {
     const data = await api.post('/auth/login', { email, password });
     
-    // Save token and user
     localStorage.setItem('token', data.token);
     const userData = { _id: data._id, name: data.name, email: data.email, role: data.role, workspaceName: data.workspaceName };
     localStorage.setItem('user', JSON.stringify(userData));
@@ -38,7 +36,6 @@ export const AuthProvider = ({ children }) => {
   const verifyOtp = async (email, otp) => {
     const data = await api.post('/auth/verify-otp', { email, otp });
     
-    // Save token and user
     localStorage.setItem('token', data.token);
     const userData = { _id: data._id, name: data.name, email: data.email, role: data.role, workspaceName: data.workspaceName };
     localStorage.setItem('user', JSON.stringify(userData));
@@ -57,7 +54,6 @@ export const AuthProvider = ({ children }) => {
   const onboard = async (role, workspaceName) => {
     const data = await api.put('/auth/onboarding', { role, workspaceName });
     
-    // Update token and user
     localStorage.setItem('token', data.token);
     const userData = { _id: data._id, name: data.name, email: data.email, role: data.role, workspaceName: data.workspaceName };
     localStorage.setItem('user', JSON.stringify(userData));
